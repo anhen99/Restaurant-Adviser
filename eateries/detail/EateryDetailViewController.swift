@@ -43,17 +43,25 @@ class EateryDetailViewController: UIViewController, UITableViewDataSource, UITab
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    @IBAction func knopka(_ sender: UIButton) {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mapSegue"  {
+            let destinationViewController = segue.destination as! MapViewController
+            destinationViewController.restaurant = self.restaurant
+        }
     }
-    //    @IBAction func rateButton(_ sender: UIButton) {
-//    }
-    @IBOutlet weak var test3: UIButton!
-    @IBOutlet weak var rateButtom: UIButton!
+    
+ 
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var test3: UIButton! // кнопка Rate button
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     var restaurant: Restaurant?
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue){
+        guard let sourceViewController = segue.source as? RateViewController else {return}
+        guard let rating = sourceViewController.restRating else { return  }
+        test3.setImage(UIImage(named: rating), for: .normal)
     }
     //    override func viewWillAppear(_ animated: Bool) {
 //        navigationController?.hidesBarsOnSwipe = false
@@ -62,10 +70,14 @@ class EateryDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        test3.layer.cornerRadius = 5
-        test3.layer.borderWidth = 1
-        test3.layer.borderColor = UIColor.white.cgColor // кнопка переключатель вью контроллеров стретьего раза получилась
-        
+        let buttons = [test3, mapButton] // test3 = rateButton
+        for button in buttons{
+            guard let button = button else { break }
+            button.layer.cornerRadius = 5
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.white.cgColor // кнопка переключатель вью контроллеров стретьего раза получилась
+            
+        }
 //        rateButtom.layer.cornerRadius = 5
 //        rateButtom.layer.borderWidth = 1
 //        rateButtom.layer.borderColor = UIColor.white.cgColor
