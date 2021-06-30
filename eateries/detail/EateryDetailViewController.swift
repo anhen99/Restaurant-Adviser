@@ -87,7 +87,7 @@ class EateryDetailViewController: UIViewController, UITableViewDataSource, UITab
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         title = restaurant!.name
 
-        imageView.image = UIImage(named: restaurant!.image)
+        imageView.image = UIImage(data: restaurant!.image! as Data)
         
         
     }

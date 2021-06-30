@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		043FDCDE26845E2300768E77 /* EateryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FDCDD26845E2300768E77 /* EateryDetailViewController.swift */; };
-		043FDCE12684638700768E77 /* restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FDCE02684638700768E77 /* restaurant.swift */; };
 		043FDCE52684B54100768E77 /* EateryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FDCE42684B54100768E77 /* EateryDetailTableViewCell.swift */; };
 		043FDCED2685CE2500768E77 /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FDCEC2685CE2500768E77 /* RateViewController.swift */; };
+		04BD1B1E268C5B9C00CC8132 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BD1B1D268C5B9C00CC8132 /* CoreDataStack.swift */; };
+		04BD1B22268C5EB500CC8132 /* Eateries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04BD1B20268C5EB500CC8132 /* Eateries.xcdatamodeld */; };
 		04DDF160268603E200F85B4D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDF15F268603E200F85B4D /* MapViewController.swift */; };
 		04DDF1672686062600F85B4D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DDF1662686062600F85B4D /* MapKit.framework */; };
+		04DDF16A268B324900F85B4D /* NewEateryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDF169268B324900F85B4D /* NewEateryTableViewController.swift */; };
 		EBE642F426830CD2009BDA99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE642F326830CD2009BDA99 /* AppDelegate.swift */; };
 		EBE642F626830CD2009BDA99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE642F526830CD2009BDA99 /* SceneDelegate.swift */; };
 		EBE642FB26830CD2009BDA99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE642F926830CD2009BDA99 /* Main.storyboard */; };
@@ -24,11 +26,13 @@
 
 /* Begin PBXFileReference section */
 		043FDCDD26845E2300768E77 /* EateryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryDetailViewController.swift; sourceTree = "<group>"; };
-		043FDCE02684638700768E77 /* restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restaurant.swift; sourceTree = "<group>"; };
 		043FDCE42684B54100768E77 /* EateryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		043FDCEC2685CE2500768E77 /* RateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
+		04BD1B1D268C5B9C00CC8132 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		04BD1B21268C5EB500CC8132 /* Eateries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eateries.xcdatamodel; sourceTree = "<group>"; };
 		04DDF15F268603E200F85B4D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		04DDF1662686062600F85B4D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		04DDF169268B324900F85B4D /* NewEateryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEateryTableViewController.swift; sourceTree = "<group>"; };
 		EBE642F026830CD2009BDA99 /* eateries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eateries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE642F326830CD2009BDA99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE642F526830CD2009BDA99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,13 +94,15 @@
 			isa = PBXGroup;
 			children = (
 				EBE642F326830CD2009BDA99 /* AppDelegate.swift */,
+				04BD1B1D268C5B9C00CC8132 /* CoreDataStack.swift */,
 				EBE642F526830CD2009BDA99 /* SceneDelegate.swift */,
 				04DDF15F268603E200F85B4D /* MapViewController.swift */,
 				043FDCEC2685CE2500768E77 /* RateViewController.swift */,
+				04DDF169268B324900F85B4D /* NewEateryTableViewController.swift */,
+				04BD1B20268C5EB500CC8132 /* Eateries.xcdatamodeld */,
 				043FDCE72684B55A00768E77 /* detail */,
 				EBE6430C268313E2009BDA99 /* eateriesTableViewCell.swift */,
 				EBE6430926830DAA009BDA99 /* eateriesTableViewController.swift */,
-				043FDCE02684638700768E77 /* restaurant.swift */,
 				EBE642FC26830CD3009BDA99 /* Assets.xcassets */,
 				EBE642F926830CD2009BDA99 /* Main.storyboard */,
 				EBE642FE26830CD3009BDA99 /* LaunchScreen.storyboard */,
@@ -176,11 +182,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				043FDCE52684B54100768E77 /* EateryDetailTableViewCell.swift in Sources */,
-				043FDCE12684638700768E77 /* restaurant.swift in Sources */,
 				EBE6430A26830DAA009BDA99 /* eateriesTableViewController.swift in Sources */,
+				04BD1B22268C5EB500CC8132 /* Eateries.xcdatamodeld in Sources */,
 				043FDCDE26845E2300768E77 /* EateryDetailViewController.swift in Sources */,
 				04DDF160268603E200F85B4D /* MapViewController.swift in Sources */,
 				EBE642F426830CD2009BDA99 /* AppDelegate.swift in Sources */,
+				04BD1B1E268C5B9C00CC8132 /* CoreDataStack.swift in Sources */,
+				04DDF16A268B324900F85B4D /* NewEateryTableViewController.swift in Sources */,
 				EBE642F626830CD2009BDA99 /* SceneDelegate.swift in Sources */,
 				043FDCED2685CE2500768E77 /* RateViewController.swift in Sources */,
 				EBE6430D268313E2009BDA99 /* eateriesTableViewCell.swift in Sources */,
@@ -389,6 +397,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04BD1B20268C5EB500CC8132 /* Eateries.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04BD1B21268C5EB500CC8132 /* Eateries.xcdatamodel */,
+			);
+			currentVersion = 04BD1B21268C5EB500CC8132 /* Eateries.xcdatamodel */;
+			path = Eateries.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EBE642E826830CD2009BDA99 /* Project object */;
 }
