@@ -50,7 +50,13 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.delegate = self
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        searchController.searchBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchController.searchBar.searchTextField.backgroundColor = .white
         definesPresentationContext = true
+        
+        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         //сreate fetch request with descriptor
@@ -75,6 +81,15 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let pageViewController = storyboard?.instantiateViewController(identifier: "pageViewController") as? PageViewController {
+            present(pageViewController, animated: true, completion: nil)
+        }
+    }
+
     
     // MARK: - Fetch results controller delegate
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -185,3 +200,13 @@ extension eateriesTableViewController: UISearchResultsUpdating{
     }
 }
 
+extension eateriesTableViewController: UISearchBarDelegate{
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchBar.text == "" {
+            navigationController?.hidesBarsOnSwipe = false
+        }
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        navigationController?.hidesBarsOnSwipe = true
+    }
+}
