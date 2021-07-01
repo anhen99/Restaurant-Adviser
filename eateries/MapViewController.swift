@@ -11,9 +11,6 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     var restaurant: Restaurant!
-    
-    
-    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -34,26 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             self.mapView.showAnnotations([annotation], animated: true)
             self.mapView.selectAnnotation(annotation, animated: true)
-            
-            
-            
-            //            mapView?(MKMapView, viewFor: MKAnnotation){
-            //                guard !(annotation is MKUserLocation) else { return nil }
-            //            }
         }
-        
- 
-        
-        /*
-         // MARK: - Navigation
-         
-         // In a storyboard-based application, you will often want to do a little preparation before navigation
-         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-         }
-         */
-        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
@@ -73,6 +51,4 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         annotationView?.pinTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         return annotationView
     }
-    
-    
 }

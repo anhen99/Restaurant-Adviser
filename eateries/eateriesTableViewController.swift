@@ -15,25 +15,23 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
     
     var filteredResultArray: [Restaurant] = []
     var restaurants: [Restaurant] = []
-//      Restaurant(name: "Under Wonder", type: "ресторан", location: "Киев, Большая Васильковская 21", image: "download (1)", isVisited: false),
-//      Restaurant(name: "Любимый Дядя", type: "ресторан", location: "Киев, Паньковская 20", image: "download (2)", isVisited: false),
-//      Restaurant(name: "Прага", type: "ресторан", location: "Киев, Академика Глушкова 1", image: "download (3)", isVisited: false),
-//      Restaurant(name: "Панормама Клаб", type: "ресторан", location: "Киев, Крещатик 1/2", image: "download (4)", isVisited: false),
-//      Restaurant(name: "VINO e CUCINA", type: "ресторан", location: "Киев, Сечевых Стрельцов 82", image: "download (5)", isVisited: false),
-//      Restaurant(name: "Odessa", type: "ресторан-клуб", location: "Киев, Большая Васильковская 114", image: "download (6)", isVisited: false),
-//      Restaurant(name: "Шоти", type: "ресторан", location: "Киев, Мечникова 6", image: "download (7)", isVisited: false),
-//      Restaurant(name: "Coin", type: "ресторан", location: "Киев, Болсуновская 13/15", image: "download (8)", isVisited: false),
-//      Restaurant(name: "Mario", type: "ресторанный комплекс", location: "Киев, Льва Толстого 14а", image: "download (9)", isVisited: false),
-//      Restaurant(name: "NeGorkiy", type: "ресторан", location: "Киев, Антоновичка 74", image: "download (10)", isVisited: false),
-//      Restaurant(name: "Купеческий Двор", type: "ресторан", location: "Киев, Столичное шоссе", image: "download (11)", isVisited: false),
-//      Restaurant(name: "Viila Vita", type: "ресторан", location: "Киев, Вита Поштова", image: "download (12)", isVisited: false),
-//      Restaurant(name: "Fatum", type: "ресторан", location: "Киев, Василия Липковского 16В", image: "download (13)", isVisited: false),
-//      Restaurant(name: "Silk Road", type: "ресторан", location: "Киев, Казимира Малевича 84", image: "download (14)", isVisited: false),
-//      Restaurant(name: "Уголек", type: "ресторан", location:  "Киев, Сагайдачного 35", image: "download (15)", isVisited: false)]
-//    
-    @IBAction func close(segue: UIStoryboardSegue){
-        
-    }
+    //      Restaurant(name: "Under Wonder", type: "ресторан", location: "Киев, Большая Васильковская 21", image: "download (1)", isVisited: false),
+    //      Restaurant(name: "Любимый Дядя", type: "ресторан", location: "Киев, Паньковская 20", image: "download (2)", isVisited: false),
+    //      Restaurant(name: "Прага", type: "ресторан", location: "Киев, Академика Глушкова 1", image: "download (3)", isVisited: false),
+    //      Restaurant(name: "Панормама Клаб", type: "ресторан", location: "Киев, Крещатик 1/2", image: "download (4)", isVisited: false),
+    //      Restaurant(name: "VINO e CUCINA", type: "ресторан", location: "Киев, Сечевых Стрельцов 82", image: "download (5)", isVisited: false),
+    //      Restaurant(name: "Odessa", type: "ресторан-клуб", location: "Киев, Большая Васильковская 114", image: "download (6)", isVisited: false),
+    //      Restaurant(name: "Шоти", type: "ресторан", location: "Киев, Мечникова 6", image: "download (7)", isVisited: false),
+    //      Restaurant(name: "Coin", type: "ресторан", location: "Киев, Болсуновская 13/15", image: "download (8)", isVisited: false),
+    //      Restaurant(name: "Mario", type: "ресторанный комплекс", location: "Киев, Льва Толстого 14а", image: "download (9)", isVisited: false),
+    //      Restaurant(name: "NeGorkiy", type: "ресторан", location: "Киев, Антоновичка 74", image: "download (10)", isVisited: false),
+    //      Restaurant(name: "Купеческий Двор", type: "ресторан", location: "Киев, Столичное шоссе", image: "download (11)", isVisited: false),
+    //      Restaurant(name: "Viila Vita", type: "ресторан", location: "Киев, Вита Поштова", image: "download (12)", isVisited: false),
+    //      Restaurant(name: "Fatum", type: "ресторан", location: "Киев, Василия Липковского 16В", image: "download (13)", isVisited: false),
+    //      Restaurant(name: "Silk Road", type: "ресторан", location: "Киев, Казимира Малевича 84", image: "download (14)", isVisited: false),
+    //      Restaurant(name: "Уголек", type: "ресторан", location:  "Киев, Сагайдачного 35", image: "download (15)", isVisited: false)]
+    //
+    @IBAction func close(segue: UIStoryboardSegue) { }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.hidesBarsOnSwipe = true
@@ -42,19 +40,18 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
     func filteredContentFor(searchText text: String){
         filteredResultArray = restaurants.filter { (restaurant) -> Bool in
             return (restaurant.name?.lowercased().contains(text.lowercased()))!
-            
-    }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      searchController = UISearchController(searchResultsController: nil)
+        searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
-        
-   self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        definesPresentationContext = true
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         //сreate fetch request with descriptor
         let fetchRequest: NSFetchRequest<Restaurant> = Restaurant.fetchRequest()
@@ -66,18 +63,19 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
             //creating fetch result controller
             fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultsController.delegate = self
-           
+            
             //trying to retrieve data
-            do{
+            do {
                 try fetchResultsController.performFetch()
-               
+                
                 //save received data in restaurants array
                 restaurants = fetchResultsController.fetchedObjects!
-            }catch let error as NSError{
+            } catch let error as NSError {
                 print(error.localizedDescription)
             }
         }
     }
+    
     // MARK: - Fetch results controller delegate
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -102,15 +100,11 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     
-    
-    
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -121,12 +115,13 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
         return restaurants.count
     }
     
+    
     func restaurantToDisplayAt(indexPath: IndexPath) -> Restaurant {
         let restaurant: Restaurant
         if searchController.isActive && searchController.searchBar.text != "" {
             restaurant = filteredResultArray[indexPath.row]
-        
-        }else{
+            
+        } else {
             restaurant = restaurants[indexPath.row]
         }
         return restaurant
@@ -135,10 +130,6 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EateriesTableViewCell
         let restaurant = restaurantToDisplayAt(indexPath: indexPath)
-        
-        
-        
-        
         let image = UIImage(data: restaurant.image! as Data)
         cell.imageLabel.image = image
         cell.imageLabel.layer.cornerRadius = 20
@@ -146,79 +137,14 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
         cell.nameLabel.text = restaurant.name
         cell.locationLabel.text = restaurant.location
         cell.typeLabel.text = restaurant.type
-//
-//        if self.restaurans[indexPath.row].isVisited {
-//            cell.accessoryType = .checkmark
-//        }else{
-//            cell.accessoryType = .none
-//        }
-//
         cell.accessoryType = restaurant.isVisited ? .checkmark : .none
-    
         return cell
     }
     
-    
-    /* func showAlert(index: Int){
-     let alCont = UIAlertController(title: "Выберите действие", message: "Тело сообщения", preferredStyle: .actionSheet) // может быть .alert - тогда расположится по центру
-     let callAction = UIAlertAction(title: "Позвонить: +(380)99777135\(index)", style: .default){
-     (action: UIAlertAction) -> Void in
-     let alertC = UIAlertController(title: nil, message: "Вызов не может быть совершен", preferredStyle: .alert)
-     let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-     alertC.addAction(ok)
-     self.present(alertC, animated: true, completion: nil)
-     }
-     let cancel = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-     alCont.addAction(cancel)
-     alCont.addAction(callAction)
-     present(alCont, animated: true, completion: nil)
-     
-     
-     }
-     */
-    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let alCont = UIAlertController(title: "Выберите действие", message: "Тело сообщения", preferredStyle: .actionSheet) // может быть .alert - тогда расположится по центру
-//        let callAction = UIAlertAction(title: "Позвонить: +(380)99777135\(indexPath.row)", style: .default){
-//            (action: UIAlertAction) -> Void in
-//            let alertC = UIAlertController(title: nil, message: "Вызов не может быть совершен", preferredStyle: .alert)
-//            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-//            alertC.addAction(ok)
-//            self.present(alertC, animated: true, completion: nil)
-//        }
-//        let isVisitedTitle = self.restaurantIsViisited[indexPath.row] ? "Я не был здесь" : "Я был здесь"
-//        let isVisited = UIAlertAction(title: isVisitedTitle, style: .default) { (action) in
-//            let cell = tableView.cellForRow(at:indexPath)
-//            
-//            self.restaurantIsViisited[indexPath.row] = !self.restaurantIsViisited[indexPath.row]
-//            cell?.accessoryType = self.restaurantIsViisited[indexPath.row] ? .checkmark : .none
-//        }
-//        
-//        let cancel = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-//        alCont.addAction(callAction)
-//        alCont.addAction(cancel)
-//        alCont.addAction(isVisited)
-//        
-//        present(alCont, animated: true, completion: nil)
-//        
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        
-//        
-//    }
-    
-    //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    //        if editingStyle == .delete{
-    //            self.restaurantImages.remove(at: indexPath.row)
-    //            self.restaurantNames.remove(at: indexPath.row)
-    //            self.restaurantIsViisited.remove(at: indexPath.row)
-    //        }
-    //        tableView.deleteRows(at: [indexPath], with: .fade)
-    //    }
-    //
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let share = UITableViewRowAction(style: .default, title: "Поделиться") { (action, IndexPath) in
             let defaultText = "Я сейчас в " + self.restaurants[indexPath.row].name!
-            if let image = UIImage(data: self.restaurants[IndexPath.row].image! as Data){
+            if let image = UIImage(data: self.restaurants[IndexPath.row].image! as Data) {
                 let activityController = UIActivityViewController(activityItems: [defaultText, image], applicationActivities: nil)
                 self.present(activityController, animated: true, completion: nil)
             }
@@ -226,14 +152,12 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
         
         let delete = UITableViewRowAction(style: .default, title: "Удалить") { (action, IndexPath) in
             self.restaurants.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
             if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
-                
                 let objectToDelete = self.fetchResultsController.object(at: indexPath)
                 context.delete(objectToDelete)
-                do{
+                do {
                     try context.save()
-                }catch{
+                } catch {
                     print(error.localizedDescription)
                 }
             }
@@ -243,8 +167,7 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
         delete.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         return[delete, share]
     }
-        
-        
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue" {
             if let indexPath = tableView.indexPathForSelectedRow{
@@ -254,43 +177,11 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
         }
     }
 }
-        
-    extension eateriesTableViewController: UISearchResultsUpdating{
-        func updateSearchResults(for: UISearchController){
-            filteredContentFor(searchText: searchController.searchBar.text!)
-            tableView.reloadData()
-            
-            
-            
-        }
-    
+
+extension eateriesTableViewController: UISearchResultsUpdating{
+    func updateSearchResults(for: UISearchController){
+        filteredContentFor(searchText: searchController.searchBar.text!)
+        tableView.reloadData()
     }
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-
-
-
+}
 

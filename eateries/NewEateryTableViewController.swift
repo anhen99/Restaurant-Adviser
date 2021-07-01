@@ -18,18 +18,16 @@ class NewEateryTableViewController: UITableViewController, UIImagePickerControll
     var isVisited = false
     
     @IBAction func toggleIsVisitedPressed(_ sender: UIButton) {
-        if sender == yesButton{
+        if sender == yesButton {
             sender.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
             noButton.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             isVisited = true
-        }else{
+        } else {
             sender.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
             yesButton.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             isVisited = false
-            
         }
     }
-    
     
     @IBAction func savveButtonPressed(_ sender: UIBarButtonItem) {
         if nameTextField.text == "" || adressTextField.text == "" || typeTextField.text == "" {
@@ -38,32 +36,33 @@ class NewEateryTableViewController: UITableViewController, UIImagePickerControll
             alertControllerField.addAction(cancelButton)
             self.present(alertControllerField, animated: true, completion: nil)
         } else {
+            
             //tring to get context
             if let context = (UIApplication.shared.delegate as?AppDelegate)?.coreDataStack.persistentContainer.viewContext{
                 //create enity(экземпляр) of our class in the context
                 let restaurant = Restaurant(context: context)
+                
                 //set all properties
                 restaurant.name = nameTextField.text
                 restaurant.location = adressTextField.text
                 restaurant.type = typeTextField.text
                 restaurant.isVisited = isVisited
+                
                 //as we expect to get binary data so we cast to NSData
                 if let image = imageView.image{
                     restaurant.image = image.pngData()
                 }
                 //trying save context
-                do{
+                do {
                     try context.save()
                     print("Сохранение удалось!")
-                }catch let error as NSError{
+                } catch let error as NSError {
                     print("Не удалось сохранить данные \(error),\(error.userInfo)")
                 }
-                
             }
             
             performSegue(withIdentifier: "unwindSegueFromNerEatery", sender: self)
         }
-        
     }
     
     override func viewDidLoad() {
@@ -73,13 +72,11 @@ class NewEateryTableViewController: UITableViewController, UIImagePickerControll
         noButton.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
     }
     
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imageView.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         dismiss(animated: true, completion: nil)
-        
     }
     
     // MARK: - Table view data source
@@ -121,59 +118,4 @@ class NewEateryTableViewController: UITableViewController, UIImagePickerControll
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
