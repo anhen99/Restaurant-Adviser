@@ -85,6 +85,11 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
+        let userDefaults = UserDefaults.standard
+        let wasIntroWatched = userDefaults.bool(forKey: "wasIntroWatched")
+        guard !wasIntroWatched else { return } // если слайды не были просмотренны, выполняется код снизу, если были просмотренны, срабатывает  return
+        
         if let pageViewController = storyboard?.instantiateViewController(identifier: "pageViewController") as? PageViewController {
             present(pageViewController, animated: true, completion: nil)
         }
@@ -154,6 +159,12 @@ class eateriesTableViewController: UITableViewController, NSFetchedResultsContro
         cell.typeLabel.text = restaurant.type
         cell.accessoryType = restaurant.isVisited ? .checkmark : .none
         return cell
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

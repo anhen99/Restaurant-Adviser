@@ -19,9 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
         UINavigationBar.appearance().tintColor = .white
         
+        UITabBar.appearance().tintColor = .white
+        UITabBar.appearance().barTintColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+//        UITabBar.appearance().selectionIndicatorImage = UIImage(named: "tabSelect")
+        
         let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20))
         statusBarView.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-        self.window?.rootViewController?.view.insertSubview(statusBarView, at: 1)
+        self.window?.rootViewController?.view.insertSubview(statusBarView, at: 0)
         
         
         if let barFont = UIFont(name: "AppleSDGothicNeo-Light", size: 24){

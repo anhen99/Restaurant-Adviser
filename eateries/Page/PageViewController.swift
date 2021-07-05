@@ -33,6 +33,12 @@ class PageViewController: UIPageViewController {
         contentVC.index = index
         return contentVC
     }
+    
+    func nextVC(atIndex index: Int){
+        if let contentVC = displayViewController(atIndex: index + 1){
+            setViewControllers([contentVC], direction: .forward, animated: true, completion: nil)
+        }
+    }
 }
 
 extension PageViewController: UIPageViewControllerDataSource {
@@ -47,7 +53,14 @@ extension PageViewController: UIPageViewControllerDataSource {
         var index = (viewController as! ContentViewController).index
         index += 1
         return displayViewController(atIndex: index)
-        
     }
+    
+    //    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+    //        return headersArray.count
+    //    }
+    //    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+    //        let contentVC = storyboard?.instantiateViewController(identifier: "contentViewController") as? ContentViewController
+    //        return contentVC!.index
+    //    }
 }
 
