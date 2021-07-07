@@ -188,7 +188,7 @@
             </objects>
             <point key="canvasLocation" x="676.81159420289862" y="50.892857142857139"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Most Viewed-->
         <scene sceneID="tRY-G6-nSg">
             <objects>
                 <tableViewController id="fYn-T7-HPY" sceneMemberID="viewController">
@@ -211,7 +211,7 @@
                             <outlet property="delegate" destination="fYn-T7-HPY" id="Xdg-bD-nss"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="bqu-T3-8cK"/>
+                    <navigationItem key="navigationItem" title="Most Viewed" id="bqu-T3-8cK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IF9-sL-cE8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
